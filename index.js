@@ -171,8 +171,8 @@ console.log(SonDegerlendirmeyiAl(degerlendirmeler));
 	]
 */
 
-function PuanaGoreDegerlendirmeAl(/* Kodlar buraya */) {
-    /* Kodlar buraya */
+function PuanaGoreDegerlendirmeAl(array) {
+  return array.filter( obj=> obj.puan >= 4 && obj.puan<5);
 }
 
 
@@ -183,9 +183,8 @@ function PuanaGoreDegerlendirmeAl(/* Kodlar buraya */) {
 	
 */
 
-function UzunDegerlendirmeleriAl(/* Kodlar buraya */) {
-    /* Kodlar buraya */
-}
+function UzunDegerlendirmeleriAl(array) {
+   return array.filter( obj=> obj.geribildirim.split(" ").length > 15);
 
 
 /*  BONUS 3:  
