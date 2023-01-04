@@ -15,10 +15,11 @@ const serpmeKahvalti = {isim: "Serpme Kahvaltı", fiyat: 16, kategori:"Kahvaltı
 */
 
 
-function MenuElemaniOlustur(/*Kodlar buraya*/){
-	/*Kodlar buraya*/
+function MenuElemaniOlustur(nName,nPrice,nCategory){
+	const oMenu = {isim: nName, fiyat: nPrice, kategori: nCategory};
+	return oMenu;
 }
-
+console.log(MenuElemaniOlustur('Cheeseburger', 8, 'Burgerler'));
 
 
 /*  Görev 1b (otomatik test yok): 
@@ -30,7 +31,7 @@ function MenuElemaniOlustur(/*Kodlar buraya*/){
 	
 	Örnek: MenuElemaniOlustur("Karışık Pizza",5,"Pizzalar") şunu döndürür: {isim:"Karışık Pizza",fiyat:5,kategori:"Pizzalar"}
 */
-
+console.log(MenuElemaniOlustur("Karışık Pizza",5,"Pizzalar"));
 
 
 /* Görev 2: 
@@ -44,15 +45,17 @@ function MenuElemaniOlustur(/*Kodlar buraya*/){
 	
 	Örnek: burger.indirim("öğretmen") 13.5 döndürmeli ve burger.indirim("diğer") 16.2 döndürmeli
 */
-
-
+ console.log ( "Burger");
 const burger = {
 	isim: "Burger", 
 	fiyat: 18, 
 	kategori: "Öğle Yemeği", 
-
-}
-
+	indirim : function (iD) { // iD => neden NaN çevirmekte
+		if (iD =="öğretmen" || iD =="öğrenci") return this.fiyat*0.75;
+		else return this.fiyat*0.9; 
+	}
+		}
+ console.log(burger.indirim("öğretmen"));
 
 
 ///////////////Değerlendirmeler (MVP)///////////////////
@@ -71,6 +74,8 @@ const degerlendirmeler = [
 	Yukarıdaki degerlendirmeler dizisini(array) kullanarak:
 	1. Sadece Ahmet'in geribildirimini konsolda görüntüleyin - fonksiyona gerek yok
 */
+ const feedBack = degerlendirmeler.filter((item) => item.isim ==="Ahmet");
+ console.log(feedBack[0].geribildirim);
 
 
 
@@ -79,7 +84,9 @@ const degerlendirmeler = [
 	1. Bu geribildirimi Reyna'nın değerlendirmesine ekleyin - "bu mekan bir harika dostum, yine de garsonun gülümsememesinden puan kırdım"
 	2. degerlendirmeler dizisini konsolda görüntüleyerek çalışmanızı kontrol edin
 */
-
+ const reedBack = degerlendirmeler.filter((item) => item.isim ==="Reyna");
+ reedBack[0].geribildirim = "Bakla sipariş verdik baklava geldi, Rezal@";
+ console.log(reedBack);
 
 
 /*  Görev 5: 
@@ -93,11 +100,13 @@ const degerlendirmeler = [
 	4. Güncellenmiş diziyi döndürecek
 */
 
-
-function DegerledirmeEkle(/*Kodlar buraya */){
-	/*Kodlar buraya */
-	
-}
+console.clear;
+function DegerledirmeEkle(array,name,point,feedBack){
+	const nObject ={isim : name, puan : point, geribildirim : feedBack}
+	array.push(nObject);
+	return array;
+	}
+	console.log(DegerledirmeEkle(degerlendirmeler,'Hurşut', 2, 'Boktan yemekler!'))
 
 
 
@@ -112,11 +121,14 @@ function DegerledirmeEkle(/*Kodlar buraya */){
 */
 
 
-function AnahtardanDegerlendirmeAl(/*Kodlar buraya*/) {
-	/*Kodlar buraya*/
+function AnahtardanDegerlendirmeAl(array,index) {
+const name = array[index].isim;
+const point = array[index].puan;
+const feedBack = array[index].geribildirim;
 
+return `${name} isimli kişi ${point} puan verdi ve şunları yazdı: ${feedBack}`
 }
-
+console.log(AnahtardanDegerlendirmeAl(degerlendirmeler,0));
 
 
 /*  Görev 7:  
@@ -132,10 +144,15 @@ function AnahtardanDegerlendirmeAl(/*Kodlar buraya*/) {
 */
 
 
-function SonDegerlendirmeyiAl(/*Kodlar buraya*/) {
-	/*Kodlar buraya*/
-} 
+function SonDegerlendirmeyiAl(array) {
+	const name = array[array.length-1].isim;
+	const point = array[array.length-1].puan;
+	const feedBack = array[array.length-1].geribildirim;
 
+	
+	return `${name} isimli kişi ${point} puan verdi ve şunları yazdı: ${feedBack}`
+} 
+console.log(SonDegerlendirmeyiAl(degerlendirmeler));
 
 
 /////////////// BONUS  GÖRVLER////////////////////
